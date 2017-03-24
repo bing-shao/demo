@@ -1,0 +1,36 @@
+<html>
+<head>
+<title>乘法口决表</title>
+<meta http-equiv="content-Type" content="text/html;charset=UTF-8">
+<script type="text/javascript" src="js/jquery-1.4.4.min.js" ></script>
+<style type="text/css">
+	.span1{
+		border: 1px solid;
+	}
+	.span2{
+		border-bottom: 1px solid;
+		border-right: 1px solid;
+		border-top: 1px solid;
+	}
+</style>
+</head>
+<body>
+<center>
+<script language="javascript">
+for(i=1;i<10;i++)
+{
+	var a=new String()
+	for(j=1;j<i+1;j++)
+		{
+			if(i==1 || j==1){
+				a=a+"<span class='span1'>"+" "+j+"*"+i+"="+[j*i]+" "+"</span>"
+			}else{
+				a=a+"<span class='span2'>"+" "+j+"*"+i+"="+[j*i]+" "+"</span>"
+			}
+		}
+			document.write (a+"<br>");
+}
+</script>
+</center>
+</body>
+</html>

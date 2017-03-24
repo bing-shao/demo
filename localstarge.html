@@ -1,0 +1,224 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="description" content="HTML5 localstorage本地存储实际项目中渐进使用举例 » 张鑫旭-鑫空间-鑫生活" />
+<meta name="description" content="张鑫旭web前端学习实例页面" />
+<meta name="keywords" content="张鑫旭, web前端, css, HTML5, javascript, localstorage" />
+<meta name="author" content="张鑫旭, zhangxixnu" />
+<title>HTML5 localstorage本地存储实际项目中渐进使用举例 » 张鑫旭-鑫空间-鑫生活</title>
+<link rel="stylesheet" href="http://s1.xiaomishu.com/b/css/min/base.css" type="text/css" />
+<link rel="stylesheet" href="../css/demo.css" type="text/css" />
+<style>
+.res_mem_menu_top{display:block; height:33px; line-height:33px; padding-left:12px; border:1px solid #006600; background:#019f00; background:-webkit-gradient(linear, 0 0, 0 100%, from(#019f00), to(#007a01)); background:-moz-linear-gradient(top, #019f00, #007a01); background:-o-linear-gradient(top, #019f00, #007a01); filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#019f00, endColorstr=#007a01, GradientType=0); color:#fff!important; font-size:14px;}
+.res_mem_menu_border{border:solid #ccc; border-width:0 1px; background-color:#FFF;}
+.res_mem_menu_title{border-bottom:1px solid #ccc; background:#f9f9f9; background:-webkit-gradient(linear, 0 0, 0 100%, from(#f9f9f9), to(#f1f1f1)); background:-moz-linear-gradient(top, #f9f9f9, #f1f1f1);  background:-o-linear-gradient(top, #f9f9f9, #f1f1f1); filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#f9f9f9, endColorstr=#f1f1f1, GradientType=0); position:relative; cursor:pointer; *zoom:1;}
+.res_mem_menu_link{padding-left:12px; line-height:30px; border-bottom:1px solid #fff; color:#333;}
+.res_mem_list_link{display:block; height:24px; line-height:24px; padding-left:25px; margin:2px 2px 0; color:#333;}
+.res_mem_list_link:hover{background-color:#f5f5f5;}
+.res_mem_list_hl{padding-left:30px; background-color:#f5f5f5; color:#800; font-weight:bold;}
+.res_mem_opt_icon{position:absolute; right:10px; top:6px;}
+.res_mem_menu_l{width:180px;}
+</style>
+</head>
+
+<body>
+<div id="header">
+	<a href="http://www.zhangxinxu.com/" class="logo" title="回到鑫空间-鑫生活首页">
+    	<img src="http://www.zhangxinxu.com/php/image/zxx_home_logo.png" border="0" />
+    </a>
+</div>
+<div id="main">
+	<h1>HTML5 localstorage本地存储实际项目中渐进使用举例实例页面</h1>
+    <div id="body" class="light">
+    	<div id="content" class="show">
+        	<h3>展示</h3>
+            <div class="article_new"><a href="http://www.zhangxinxu.com/wordpress/?p=1952">回到相关文章 »</a></div>
+            <div class="demo">
+            	<div class="res_mem_menu_l">
+                    <h2><a href="#" class="res_mem_menu_top">我的会员中心</a></h2>
+                    <div class="res_mem_menu_border tdn pt1">
+                        <h4 class="res_mem_menu_title memMenuTitle" tabindex="-1" title="收起" data-rel="mOrderCenter">
+                            <u class="u u29 res_mem_opt_icon"></u>
+                            <div class="res_mem_menu_link">订单中心</div>
+                        </h4>
+    
+                        <ul id="mOrderCenter" class="bbc pb5">
+                            <li class="res_mem_list_li">
+                                <a class="res_mem_list_link" href="#order">我的订单 <span class="g9">»</span></a>
+                            </li>
+                            <li class="res_mem_list_li">
+                                <a class="res_mem_list_link" href="#CashCoupon">我的现金券 <span class="g9">»</span></a>
+                            </li>
+                        </ul>
+                        <h4 class="res_mem_menu_title memMenuTitle" tabindex="-1" title="收起" data-rel="mInterCenter">
+                            <u class="u u29 res_mem_opt_icon"></u>
+                            <div class="res_mem_menu_link">互动中心</div>
+                        </h4>
+                        <ul id="mInterCenter" class="bbc pb5">
+                            <li class="res_mem_list_li">
+                                <a class="res_mem_list_link" href="#userCommont">我的点评 <span class="g9">»</span></a>
+                            </li>
+                            <li class="res_mem_list_li">
+                                <a class="res_mem_list_link" href="#myfriendList">我的好友<span class="g9">»</span></a>
+                            </li>
+                            <li class="res_mem_list_li">
+                                <a class="res_mem_list_link" href="#userfavorites">我关注的餐厅 <span class="g9">»</span></a>
+                            </li>
+                            <li class="res_mem_list_li">
+                                <a class="res_mem_list_link" href="#myresphotos">我的相册 <span class="g9">»</span></a>
+                            </li>
+                            <li class="res_mem_list_li">
+                                <a class="res_mem_list_link" href="#Activity">我的活动 <span class="g9">»</span></a>
+                            </li>
+                            <li class="res_mem_list_li">
+                                <a class="res_mem_list_link" href="#myDishOrder">我的菜单 <span class="g9">»</span></a>
+                            </li>
+                            <li class="res_mem_list_li">
+                                <a class="res_mem_list_link" href="#inbox">站内信 <span class="g9">»</span></a>
+                            </li>
+                            <li class="res_mem_list_li">
+                                <a class="res_mem_list_link" href="#5062536" target="_blank">我的主页 <span class="g9">»</span></a>
+                            </li>
+                        </ul>
+                        <h4 class="res_mem_menu_title memMenuTitle" tabindex="-1" title="收起" data-rel="mMyWed">
+                            <u class="u u29 res_mem_opt_icon"></u>
+                            <div class="res_mem_menu_link">我的婚宴</div>
+                        </h4>
+                        <ul id="mMyWed" class="bbc pb5">
+                            <li class="res_mem_list_li">
+                                <a class="res_mem_list_link" href="#bbsArticle">婚宴社区 <span class="g9">»</span></a>
+                            </li>
+                            <li class="res_mem_list_li">
+                                <a class="res_mem_list_link" href="javascript:">婚礼工具</a>
+                            </li>
+                            <li class="res_mem_list_li">
+                                <a class="res_mem_list_link" href="#Lunar" target="_blank"><span class="pl15">黄道吉日</span> <span class="g9">»</span></a>
+                            </li>
+                            <li class="res_mem_list_li">
+                                <a class="res_mem_list_link" href="#Budget" target="_blank"><span class="pl15">结婚预算</span> <span class="g9">»</span></a>
+                            </li>
+                            <li class="res_mem_list_li">
+                                <a class="res_mem_list_link" href="#office" target="_blank"><span class="pl15">结婚登记处</span> <span class="g9">»</span></a>
+    
+                            </li>
+                        </ul>
+                        <h4 class="res_mem_menu_title memMenuTitle" tabindex="-1" title="收起" data-rel="mManageAccount">
+                            <u class="u u29 res_mem_opt_icon"></u>
+                            <div class="res_mem_menu_link">帐号管理</div>
+                        </h4>
+                        <ul id="mManageAccount" class="bbc pb5">
+                            <li class="res_mem_list_li">
+                                <a class="res_mem_list_link" href="#BasicInfo">帐号资料 <span class="g9">»</span></a>
+                            </li>
+                            <li class="res_mem_list_li">
+                                <a class="res_mem_list_link" href="#MyLevel">我的等级 <span class="g9">»</span></a>
+                            </li>
+                            <li class="res_mem_list_li">
+                                <a class="res_mem_list_link" href="#GiftCard">我的礼品卡 <span class="g9">»</span></a>
+    
+                            </li>
+                            <li class="res_mem_list_li">
+                                <a class="res_mem_list_link" href="#MyPoints">我的积分 <span class="g9">»</span></a>
+                            </li>
+                            <li class="res_mem_list_li">
+                                <a class="res_mem_list_link" href="#PointExchange">积分兑换 <span class="g9">»</span></a>
+                            </li>
+    
+                            <li class="res_mem_list_li">
+                                <a class="res_mem_list_link" href="#BindTwitter">帐号绑定 <span class="g9">»</span></a>
+                            </li>
+                            <li class="res_mem_list_li">
+                                <a class="res_mem_list_link" href="#mysubscribe">邮件订阅 <span class="g9">»</span></a>
+                            </li>
+                            <li class="res_mem_list_li">
+    
+                                <a class="res_mem_list_link" href="#mycontacter">我的通讯录 <span class="g9">»</span></a>
+                            </li>
+                            <li class="res_mem_list_li">
+                                <a class="res_mem_list_link" href="#Password">修改密码 <span class="g9">»</span></a>
+                            </li>
+                        </ul>
+                    </div>
+    
+                </div>   
+            </div>
+        </div>       
+    </div>
+</div>
+<div id="footer">
+    Designed &amp; Powerd by <a href="http://www.zhangxinxu.com/">zhangxinxu</a><br />
+    Copyright© 张鑫旭-鑫空间-鑫生活<br>
+    <a href="http://www.miibeian.gov.cn/" target="_blank">鄂ICP备09015569号</a>      
+</div>
+<script type="text/javascript" src="http://s1.xiaomishu.com/b/js/min/mt3.js" charset="utf-8"></script>
+<script>
+(function() {
+	var strMenuKey = "memMenuTitle", eleLeftMenuTit = $$("." + strMenuKey);
+	
+	//存储垂直菜单的展开收起信息
+	var funStoreDisplay = function() {
+		var arrDisplay = [];
+		eleLeftMenuTit.each(function(title, index) {
+			arrDisplay[index] = title.retrieve("display") === false? 0: 1;	
+		});	
+		console.log(" arrDisplay:"+ arrDisplay);
+		//存储，IE6~7 cookie 其他浏览器HTML5本地存储
+		if (window.localStorage) {
+			localStorage.setItem(strMenuKey, arrDisplay);	
+		} else {
+			Cookie.write(strMenuKey, arrDisplay);	
+		}
+	};
+	
+	//默认存储与事件绑定
+	eleLeftMenuTit.store("display", true).addEvent("click", function() {
+		var eleTarget = $(this.getProperty("data-rel"));
+		if (eleTarget) {
+			if (this.retrieve("display")) {
+				eleTarget.setStyles({
+					position: "absolute",
+					left: "-9999em"	
+				});
+				this.setProperty("title", "展开").getElement(".u").removeClass("u29").addClass("u39");
+				this.store("display", false);
+			} else {
+				eleTarget.setStyle("position", "static");
+				this.setProperty("title", "收起").getElement(".u").removeClass("u39").addClass("u29");
+				this.store("display", true);
+			}
+			//存储
+			funStoreDisplay();
+		}
+		return false;
+	});
+	
+	//检测触发是否收起
+	var strStoreDate = window.localStorage? localStorage.getItem(strMenuKey): Cookie.read(strMenuKey);	
+	if (strStoreDate) {
+		strStoreDate.split(",").each(function(display, index) {
+			if (display.toInt() === 0) {
+				eleLeftMenuTit[index].fireEvent("click");
+			}
+		});	
+	}
+})();
+</script>
+<div id="ad">
+	<script type="text/javascript">	google_ad_client = "pub-0090627341039040";google_ad_slot = "2041257798";google_ad_width = 468;google_ad_height = 60;</script><script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+    <script type="text/javascript">
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-11205167-1']);
+	  _gaq.push(['_trackPageview']);
+	
+	  (function() {
+		var ga = document.createElement('script');
+		 ga.type = 'text/javascript';
+		 ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+	</script>
+</div>
+</body>
+</html>

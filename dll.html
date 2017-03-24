@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>我的测试</title>
+    <script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var demo = new ActiveXObject("WindowsFormsControlLibrary2.demo");
+            console.log(demo);
+           // $("#show").click(function () {
+             //   var show = demo.seclect_channel(35);
+               // console.log(show);
+            //})
+        })
+    </script>
+    <style type="text/css">
+        
+    </style>
+</head>
+<body>
+
+    <object id="demo" classid='clsid:68588083-5bF2-4466-a343-927FDED970AB' width="800" height="500"></object>
+    <br />
+    <input type="button" value="显示语音结果" id="show" />
+    <input type="text" value="" id="result" />
+    <br />
+    <br />
+<input type="button" value="点击录音" id="play" onclick="demo.start_recoding()" />
+<input type="button" value="停止录音" id="stop" onclick="demo.end_recoding()" />
+                                                     
+</body>
+</html>

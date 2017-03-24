@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>抽奖程序</title>
+<script type="text/javascript"> 
+var randNum=Math.random()*10;
+function testTime(){
+document.getElementById("testtime").innerHTML="<h2>"+Math.floor(Math.random()*10)+"</h2>";
+}
+function setTime(mark){
+timer=null;
+timer=setInterval(testTime,12);
+if(mark=='stop'){
+  clearInterval(timer);
+}
+return timer;
+}
+function clearTime(timer){ }
+</script>
+<style type="text/css">
+<!--
+body {font-family: Arial;color:#fff;margin: 0px;padding: 0px;background:#000;text-align:center;}
+#happyness{font-size:186px;line-height:186px;margin-top:100px;}
+-->
+</style>
+</head>
+<body>
+</body>
+<button onClick="timer=setInterval(testTime,12);" value="" style="width:100px;height:30px">开始抽奖</button>
+<button onClick="clearInterval(timer);" value="Stop" style="width:100px;height:30px">停止</button>
+<div id="testtime" style="font-size:25px"></div>
+</html>

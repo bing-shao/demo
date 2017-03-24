@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>声瀚信息</title>
+		<script type="text/javascript" src="js/jquery-1.4.4.min.js" ></script>
+	<script type="application/javascript">
+		var data=$('li.voice').siblings();
+		console.log(data);
+		console.log(typeof data);
+		console.log(data.constructor);
+		//console.log(instanceof data);
+	</script>
+	</head>
+
+	<body>
+		<table>
+			<ul>
+				<li>北京</li>
+				<li>上海</li>
+				<li>广州</li>
+				<li class="voice">深圳</li>
+				<li>杭州</li>
+				<li>南京</li>
+				<li>成都</li>
+				<li>重庆</li>
+			</ul>
+		</table>
+	</body>
+</html>

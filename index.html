@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+<meta charset="utf-8" />
+        <title>Ajax应用实例</title>
+
+        <script type="text/javaScript">
+
+            var xmlHttp;
+
+var requestType="";
+
+function createXMLHttpRequest(){
+
+    if(window.ActiveXObject){
+
+        xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+
+    }
+
+    else if(window.XMLHttpRequest){
+
+        xmlHttp = new XMLHttpRequest();
+
+    }
+
+}
+
+function startRequest(theRequestType){
+
+requestType = theRequestType;
+
+    createXMLHttpRequest();
+
+    xmlHttp.onreadystatechange = handleStateChange;
+
+    xmlHttp.open("GET","Response.xml",true);
+
+    xmlHttp.send(null);
+
+}
+
+function myCallback(){
+
+    if(xmlHttp.readyState==4){
+
+        if(xmlHttp.status==200){
+
+            if(requestType=="all")
+
+                listAll();
+
+            else if(requestType=="north")
+
+                listNorth();
+
+        }
+
+    }
+
+}
+
+function listAll(){
+
+    var xmlDoc = xmlHttp.responseXML;
+
+    var allProvs = xmlDoc.getElementsByTagName("prov");
+
+    outputList("all",allProvs);
+
+}
+
+function listNorth(){
+
+    var xmlDoc = xmlHttp.responseXML;
+
+    var north = xmlDoc.getElementsByTagName("north")[0];
+
+    var northProvs = north.getElementsByTagname("prov");
+
+    outputList("north",northProvs);
+
+}
+
+function outputList(title,provs){
+
+    var out=title;
+
+    var currentProv = null;
+
+    for(var i=0;i<provs.length;i++){
+
+    currentProv = provs[i];
+
+    out = out + “<br/>” + currentProv.childNodes[0].nodeValue;
+
+    }
+
+    document.getElementById(title).innerHTML = out;
+
+}
+
+        </script>
+
+    </head>
+
+    <body>
+
+        <h1> Ajax应用实例</h1>
+
+        <form action="#">
+
+<input style="width: 500px;height: 600px;" type="button" value="列出所有沿海省市"
+
+conclick="startRequest('all'); "/>
+
+<div id="all"></div>
+
+<input type="button" value="列出江北沿海省市"
+
+        conclick="startRequest('north'); "/>
+
+<div id="north"></div>
+
+        </form>
+
+    </body>
+
+</html>

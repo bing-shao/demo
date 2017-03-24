@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>笔试</title>
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+ <style>
+ .out{
+     text-align: center;
+    background-color: #f1f1f1;
+    display: inline-block;
+    width: 600px;
+    height: 80px;
+	padding-left:100px;
+ }
+ .content-left{
+	display: inline-block;
+    float: left;
+    width: 80px;
+    height: 30px;
+    margin-top: 25px;
+ }
+ .content-center{
+	display: inline-block;
+    float: left;
+    width: 220px;
+    margin-top: 25px;
+    border-left: thin;
+    height: 26px;
+    border-color: #b3b3b3;
+    border-right: thin;
+ }
+ .content-right{
+ display: inline-block;
+    float: left;
+    width: 100px;
+	border:1px solid;
+	border-color: #b3b3b3;
+    margin-top: 25px;
+    background-color: #a1aff1;
+    color: white;
+ }
+ input {
+    -webkit-appearance: textfield;
+    padding: 1px;
+    padding-top: 1px;
+    padding-right: 1px;
+    padding-bottom: 1px;
+    padding-left: 1px;
+    background-color: white;
+    border: 1px inset;
+    border-image-source: initial;
+    border-image-slice: initial;
+    border-image-width: initial;
+    border-image-outset: initial;
+    border-image-repeat: initial;
+    -webkit-rtl-ordering: logical;
+    -webkit-user-select: text;
+    cursor: auto;
+	height:30px;
+	
+}
+ </style>
+
+</head>
+<body>
+<div class="out">
+<form action="" method="get">
+<select id="city" class="content-left">
+  <option value="" selected="selected">选择城市</option>
+  <option value="北京">北京</option>
+  <option value="上海">上海</option>
+  <option value="广州">广州</option>
+  <option value="深圳">深圳</option>
+</select>
+<input id="mytext" class="content-center" name="" type="text" placeholder="上海" />
+<input class="content-right" type="button" value="搜索" onclick=>
+</form>
+</div>
+<script type="text/javascript" src="http://ajax.microsoft.com/ajax/jquery/jquery-1.4.min.js"></script>
+<script type="text/javascript">
+	var n;
+function add(n){ return n + (--n && add(n)) };
+function fnAdd(n){ return n?n*arguments.callee(n-1):1};
+window.onload=function(){
+	console.log("add:"+add(100));
+	console.log("fnadd:"+fnAdd()(100));
+}
+$(document).ready(function(){
+	$("#city").change(function(){
+		var name = $(this).val();
+		$("#mytext").val(name);
+	})
+	});
+</script>
+</body>
+</html>

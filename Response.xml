@@ -1,0 +1,23 @@
+<?xml version="1.0"encoding="utf-8" ?>
+
+<provs>
+
+    <north>
+
+            <prov>辽宁</prov><prov>河北</prov><prov>天津</prov>
+
+<prov>山东</prov><prov>江苏</prov>
+
+    </north>
+
+    <south>
+
+            <prov>浙江</prov><prov>福建</prov><prov>广东</prov>
+
+<prov>广西</prov><prov>海南</prov><prov>上海</prov>
+
+<prov>台湾</prov><prov>香港</prov><prov>澳门</prov>
+
+    </south>
+
+</provs>

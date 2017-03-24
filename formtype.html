@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		input,button{
+			margin: 10px 0;
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<form method="get" name="form-1" id="form-1" action="http://baidu.com/">
+		<input type="text" name="name" id="name">
+		<input type="text" name="passwd" id="passwd">
+		<button type="submit">提交</button>
+	</form>
+
+	<form method="post" name="form-2" id="form-2" action="http://baidu.com/" onsubmit="return validate_form(this)">
+		<input type="text" name="name" id="name-2">
+		<input type="text" name="passwd" id="passwd-2">
+		<button type="submit">提交</button>
+	</form>
+</body>
+<script type="text/javascript">
+    // with() 指定作用域函数。在用于表单时，直接输入表单中的name值，就可以获取该元素的dom
+    function validate_required(fieled){
+    	with(fieled){
+    		if(value == null || value == ""){
+    			// 可以做一些提示操作
+    			alert("用户的账号、密码不可为空");
+    			return false;
+    		}else{
+    			return true;
+    		}
+    	}
+    }
+	function validate_form(form){
+		with(form){
+			if(validate_required(name) == false){
+				name.focus();
+				return false;
+			}
+			if(validate_required(passwd) == false){
+				passwd.focus();
+				return false;
+			}
+			alert("返回true,可以提交表单");
+			return true; // 可以省略
+		}
+		
+	}
+</script>
+</html>

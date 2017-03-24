@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>转换协议</title>
+		<script type="text/javascript" src="js/jquery-1.4.4.min.js" ></script>
+		<style type="text/css">
+		
+		</style>
+		<script type="application/x-javascript">
+			console.log(window.location.href);
+			console.log(window.location.pathname);
+			console.log(window.location.href);
+			console.log(window.location.protocol);
+			console.log(window.location.hash);
+			console.log(window.location.host);
+			console.log(window.location.search);
+
+		</script>
+		
+	</head>
+	<body>
+		请输入关键字：<input id="key" type="text" placeholder="请输入关键字">
+		<br />
+		<br />
+		http：<input id="pre" type="text" >
+		<br />
+		<br />
+		https：<input id="after" type="text"></input>
+		<br />
+		<br />
+		ws：<input id="afterws" type="text"></input>
+		<br />
+		<br />
+		wss：<input id="afterwss" type="text"></input>
+		<br />
+		<br />
+		<button id="change">转换http</button>
+		<button id="changes">转换https</button>
+		<button id="changews">转换ws</button>
+		<button id="changewss">转换wss</button>
+		<script type="application/x-javascript">
+			var murl=window.location.href;
+			var pro=window.location.protocol;
+			$("#key").focus(function(){
+				$(this).attr('placeholder','');
+			})
+			$("#key").blur(function(){
+				$(this).attr('placeholder','请输入关键字');
+			})
+			
+			$("button").click(function(){
+				var add="?value=";
+				var btn=$(this).html();
+				var inp=$("#key").val();
+				switch(btn){
+					case "转换http":
+					pro="http";
+					var ind=murl.indexOf(":");
+					var b=murl.substring(ind);
+					var a=pro+b+add+inp;
+					$("#pre").val(a);
+					break;
+					
+					case "转换https":
+					pro="https";
+					var ind=murl.indexOf(":");
+					var b=murl.substring(ind);
+					var a=pro+b+add+inp;
+					$("#after").val(a);
+					break;
+					
+					case "转换ws":
+					pro="ws";
+					var ind=murl.indexOf(":");
+					var b=murl.substring(ind);
+					var a=pro+b+add+inp;
+					$("#afterws").val(a);
+					break;
+					
+					case "转换wss":
+					pro="wss";
+					var ind=murl.indexOf(":");
+					var b=murl.substring(ind);
+					var a=pro+b+add+inp;
+					$("#afterwss").val(a);
+					break;
+				}	
+			})
+		</script>
+	</body>
+	
+</html>

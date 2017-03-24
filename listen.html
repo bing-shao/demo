@@ -1,0 +1,54 @@
+<!DOCTYPE html> 
+<html> 
+ <head> 
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+  <title>Event</title> 
+  <script type="text/javascript"> 
+   function addEventHandler(target,type,func){ 
+    if(target.addEventListener){ 
+     //监听IE9，谷歌和火狐 
+     target.addEventListener(type, func, false); 
+    }else if(target.attachEvent){ 
+     target.attachEvent("on" + type, func); 
+    }else{ 
+     target["on" + type] = func; 
+    } 
+   } 
+   function removeEventHandler(target, type, func) { 
+    if (target.removeEventListener){ 
+     //监听IE9，谷歌和火狐 
+     target.removeEventListener(type, func, false); 
+    } else if (target.detachEvent){ 
+     target.detachEvent("on" + type, func); 
+    }else { 
+     delete target["on" + type]; 
+    } 
+   } 
+   var eventOne = function(){ 
+    alert("第一个监听事件"); 
+   } 
+   function eventTwo(){ 
+    alert("第二个监听事件"); 
+   } 
+   window.onload = function(){ 
+    var bindEventBtn = document.getElementById("bindEvent"); 
+    //监听eventOne事件 
+    addEventHandler(bindEventBtn,"click",eventOne); 
+    //监听eventTwo事件 
+    addEventHandler(bindEventBtn,"click",eventTwo ); 
+    //监听本身的事件 
+    addEventHandler(bindEventBtn,"click",function(){ 
+     alert("第三个监听事件"); 
+    }); 
+    //取消第一个监听事件 
+    removeEventHandler(bindEventBtn,"click",eventOne); 
+    //取消第二个监听事件 
+    removeEventHandler(bindEventBtn,"click",eventTwo); 
+   } 
+  </script> 
+ </head> 
+ <body> 
+  <input type="button" value="测试" id="bindEvent"> 
+  <input type="button" value="测试2" id="yuanEvent"> 
+ </body> 
+</html>

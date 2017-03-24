@@ -1,0 +1,38 @@
+<html>
+<title>js随机抽奖程序</title>
+<head><meta http-equiv=Content-Type content="text/html; charset=UTF-8">
+</head>
+<body>
+<script type="text/javascript">
+var alldata = "a,b,c,d,e,f,g,h,i,j,k"
+var alldataarr = alldata.split(",");
+console.log(typeof alldataarr);
+var num = alldataarr.length-1 ;
+var timer
+function change()
+{
+document.getElementById("oknum").innerHTML = alldataarr[GetRnd(0,num)];
+}
+function start(){
+clearInterval(timer);
+timer = setInterval('change()',100);
+}
+function ok(){
+clearInterval(timer);
+document.getElementById("showresult").value=document.getElementById("oknum").innerText;
+}
+function GetRnd(min,max){
+return parseInt(Math.random()*(max-min+1));
+}
+</script>
+<center>
+<div id="oknum" name="oknum" >请单击开始</div>
+<button onclick="start()" accesskey="s">开始</button>
+<button onclick="ok()" accesskey="o">停止</button>
+您的选择是：
+<input type="text" id="showresult" value="">
+
+</center>
+
+</body>
+</html>

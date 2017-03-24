@@ -1,0 +1,301 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+ <head>
+  <title>addUser.html</title>
+
+  <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+  <meta http-equiv="description" content="this is my page">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+
+  <script type="text/javascript" src="../js/wpCalendar.js">
+</script>
+
+ </head>
+
+ <body>
+  <div align="center">
+   <h1>
+    显示有的用户界面
+   </h1>
+
+   <div
+    style="border: 1px red solid; margin-bottom: 100px; padding: 10px 10%">
+
+    <table border="1px" cellpadding="0" cellspacing="0" id="tusers">
+     <thead>
+      <tr>
+       <th>
+        <input type="checkbox" name="chbk" id="chbk1" />
+       </th>
+       <th>
+        名称
+       </th>
+       <th>
+        性别
+       </th>
+       <th>
+        邮箱
+       </th>
+       <th>
+        出生日期
+       </th>
+       <th>
+        操作
+       </th>
+      </tr>
+     </thead>
+
+     <tbody id="users">
+
+     </tbody>
+
+    </table>
+
+    <div id="pages">
+
+    </div>
+   </div>
+
+   <div style="border: 1px blue solid;">
+    <form>
+     <table id="divs">
+      <tbody id="addUsers">
+       <tr>
+        <td>
+         用户名:
+        </td>
+        <td>
+         <input type="text" name="name" id="name" />
+        </td>
+       </tr>
+       <tr>
+        <td>
+         性别:
+        </td>
+        <td>
+         <select id="sex">
+          <option value="男">
+           男
+          </option>
+          <option value="女">
+           女
+          </option>
+         </select>
+        </td>
+       </tr>
+
+       <tr>
+        <td>
+         邮箱:
+        </td>
+        <td>
+         <input type="text" name="email" id="email" />
+        </td>
+       </tr>
+       <tr>
+        <td>
+         出生日期:
+        </td>
+        <td>
+         <input type="text" id="bir" name="bir" />
+         <input type=button value="点击看我"
+          onclick="showCalendar(this,document.all.bir)">
+        </td>
+       </tr>
+
+       <tr id="addu">
+        <td colspan="2">
+         <input type="button" value="添加" onclick="addUser()" id="add" />
+        </td>
+       </tr>
+
+       <tr id="addu1">
+        <td colspan="2">
+         <input type="button" value="修改" id="upduser" />
+        </td>
+       </tr>
+      </tbody>
+     </table>
+    </form>
+   </div>
+  </div>
+  <script>
+window.onload = function() {
+ document.getElementByIdx_x("addu1").style.display = "none";
+
+}
+
+function addUser() {
+ var name = document.getElementByIdx_x("name").value;
+ var sex = document.getElementByIdx_x("sex").value;
+ var email = document.getElementByIdx_x("email").value;
+ var bir = document.getElementByIdx_x("bir").value;
+
+ //获取表格节点对象
+ var tusers = document.getElementByIdx_x("tusers");
+
+ //创建行
+ var tr1 = document.createElement_x("tr");
+ var cbk = document.createElement_x("td");
+ var tname = document.createElement_x("td");
+ var tsex = document.createElement_x("td");
+ var temail = document.createElement_x("td");
+ var tbir = document.createElement_x("td");
+ var toper = document.createElement_x("td");
+
+ var cbk1 = document.createElement_x("input");
+ cbk1.setAttribute("type", "checkbox");
+ cbk1.setAttribute("name", "chbk");
+
+ cbk.appendChild(cbk1);
+ tname.appendChild(document.createTextNode(name));
+ tsex.appendChild(document.createTextNode(sex));
+ temail.appendChild(document.createTextNode(email));
+ tbir.appendChild(document.createTextNode(bir));
+ var adelete = document.createElement_x("a");
+ var aupdate = document.createElement_x("a");
+
+ adelete.setAttribute("href", "#");
+ aupdate.setAttribute("href", "#");
+
+ adelete.appendChild(document.createTextNode("删除 |"));
+ aupdate.appendChild(document.createTextNode("修改"));
+ toper.appendChild(adelete);
+ toper.appendChild(aupdate)
+
+ //往行中添加
+ tr1.appendChild(cbk);
+ tr1.appendChild(tname);
+ tr1.appendChild(tsex);
+ tr1.appendChild(temail);
+ tr1.appendChild(tbir);
+ tr1.appendChild(toper);
+
+ var users = document.getElementByIdx_x("users");
+ users.appendChild(tr1);
+ tusers.appendChild(users);
+
+ //删除操作
+ adelete.onclick = function() {
+  users.removeChild(adelete.parentNode.parentNode);
+ }
+
+ //修改操作
+ aupdate.onclick = function() {
+  document.getElementByIdx_x("addu").style.display = "none";
+  document.getElementByIdx_x("addu1").style.display = "block";
+
+  var utr = aupdate.parentNode.parentNode;
+  var utrs = utr.childNodes;
+
+  document.getElementByIdx_x("name").value = utrs[1].innerHTML;
+  document.getElementByIdx_x("sex").value = utrs[2].innerHTML;
+  document.getElementByIdx_x("email").value = utrs[3].innerHTML;
+  document.getElementByIdx_x("bir").value = utrs[4].innerHTML;
+
+  var upUser = document.getElementByIdx_x("upduser");
+
+  upUser.onclick = function() {
+   utr.childNodes[1].innerHTML = document.getElementByIdx_x("name").value;
+   utr.childNodes[2].innerHTML = document.getElementByIdx_x("sex").value;
+   utr.childNodes[3].innerHTML = document.getElementByIdx_x("email").value
+   utr.childNodes[4].innerHTML = document.getElementByIdx_x("bir").value
+   document.getElementByIdx_x("addu1").style.display = "none";
+   document.getElementByIdx_x("addu").style.display = "block";
+  }
+
+ }
+
+ //当添加用户的时候调用分页技术
+ testPage()
+}
+
+//定义分页标签节点对象并创建
+var indexPage = document.createElement_x("a");
+var upPage = document.createElement_x("a");
+var downPage = document.createElement_x("a");
+var endPage = document.createElement_x("a");
+var nowpage = 1;
+
+//分页技术的实现
+function testPage() {
+ var tbodyUsers = document.getElementByIdx_x("users");
+ var trUsers = tbodyUsers.getElementsByTagName_r("tr");
+ //获取总记录数
+ var countRecord = trUsers.length;
+ //每页显示的记录数
+ var PAGESIZE = 2;
+ //总页数
+ var countPage = (countRecord % PAGESIZE == 0 ? countRecord / PAGESIZE
+   : Math.ceil(countRecord / PAGESIZE));
+ //当前页信息
+ // =======>从那条记录开始 (nowpage-1)*PAGESIZE;
+ //var nowpage = countPage;
+
+ //获取创建分页标签的节点对象
+ var pages = document.getElementByIdx_x("pages");
+ //如果没有创建分页标签的节点则创建节点对象
+ if (!pages.hasChildNodes()) {
+  getPages(nowpage);
+ }
+
+ //当点击首页时的操作
+ indexPage.onclick = function() {
+  nowpage = 1;
+  //显示首页的记录
+  indexPageInfo(countRecord, trUsers);
+
+ }
+ //当点击上一页的操作
+ upPage.onclick = function() {
+  if (nowpage - 1 > 1) {
+   nowpage -= 1;
+  } else {
+   nowpage = 1;
+   indexPageInfo(countRecord, trUsers);
+  }
+
+  //显示上一页记录
+  var startindex = (nowpage - 1) * PAGESIZE;
+  alert(startindex + "====================++++++");
+  var endindex = startindex + PAGESIZE;
+
+  PageInfo(startindex, endindex, countRecord, trUsers)
+ }
+ //当点击下一页的操作
+ downPage.onclick = function() {
+
+  if (nowpage + 1 >= countPage) {
+   nowpage = countPage;
+  } else {
+   nowpage += 1;
+  }
+  alert(nowpage + "-----------------");
+
+  //显示上一页记录
+  var startindex = (nowpage - 1) * PAGESIZE;
+  alert(startindex + "====================++++++");
+  var endindex = startindex + PAGESIZE;
+  alert(startindex + "-----" + endindex + "---");
+  PageInfo(startindex, endindex, countRecord, trUsers)
+ }
+ //当点击最后一页的操作
+ endPage.onclick = function() {
+  nowpage = countPage;
+  if (nowpage > 1) {
+   var startindex = (nowpage-1)*PAGESIZE;
+   for ( var i = 0; i < countRecord; i++) {
+    if (i < startindex) {
+     trUsers[i].style.display = "none";
+    } else {
+     trUsers[i].style.display = "block";
+    }
+}
+   }
+  }
+   </script>
+ </body>
+</html>
+
+

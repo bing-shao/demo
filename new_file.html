@@ -1,0 +1,78 @@
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<script type="text/javascript" src="js/jquery-1.4.4.min.js" ></script>
+	<script type="application/javascript">
+	window.onload = function(){
+		$('#ids').css('height', '50%');
+		$('#ids').css('width', '50%');
+	}
+//  function changeFrameHeight(){
+//      var ifm= document.getElementById("ids"); 
+//      console.log(ifm.style.height);
+//      console.log(ifm.style);
+//      console.log(ifm);
+//      console.log(ifm.id);
+//      console.log(ifm.src);
+//      console.log(ifm.onload);
+//      
+//		$('#ids').find("body").height(ifm.height);
+//  }
+//
+//  window.onresize=function(){  
+//       changeFrameHeight();  
+//
+//  } 
+$(document).ready(function(){
+	$('#ids').load(function() {
+//		function reinitIframe() {         
+// var iframe = document.getElementById("ids");                
+// try 
+//{                          
+//                 var bHeight = iframe.contentWindow.document.body.scrollHeight;                
+///*       
+//                 var dHeight = iframe.contentWindow.document.documentElement.scrollHeight;              
+//                 var height = Math.max(bHeight, dHeight);                          
+//                  iframe.height = height;                */                         
+//                 iframe.height = bHeight;                      
+//} 
+//        catch (ex) { }                 
+//}
+		
+		
+ 	console.log("进来了");
+ 	console.log(this);
+ 	var iframe = document.getElementById("ids"); 
+ 	console.log(iframe);
+    var iframeHeight = iframe.contentWindow.document.body;
+    console.log(iframeHeight);
+// iframe.contentWindow.document.body.css('height','60px');
+   iframe.contentWindow.document.body.style.height='100px';
+    
+    $(this).height();
+});
+})
+    
+
+//	function changeFrameHeight(){
+// 	var mheight=$('#ids').height;
+// 	console.log(mheight);
+// 	
+// 	$('#ids').contents().css('height','50%');
+// 	$('#ids').contents().css('width','50%');
+////   $(this).contents().find("body").height(mheight);
+////  $(this).height(iframeHeight);
+// 
+//}
+
+	</script>
+	
+</head>
+<body>
+<iframe id='ids' src ="index.html" >
+<p>Your browser does not support iframes.</p>
+</iframe>
+
+</body>
+
+</html>

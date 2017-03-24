@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<form id="form1">
+<label for="male">Male</label>
+<input type="text" name="sex" id="male" />
+<br />
+<label for="female">Female</label>
+<input type="text" name="sex" id="female" />
+</form>
+
+<form id='form2'>
+	<select name="seclected">
+		<option>1</option>
+		<option selected="selected">2</option>
+		<option>3</option>
+	</select>
+Male:<input type="text" name="sex" id="male" />
+<br />
+Female:<input type="text" name="sex" id="female" />
+</form>
+<script type="text/javascript" src="js/jquery-1.4.4.min.js" ></script>
+<script type="application/javascript">
+$(document).ready(function(){
+	var for1=$("#form1").serialize();
+	var for2=$("#form2").serialize();
+	var for3=$("#form1").serializeArray();
+	var for4=$("#form2").serializeArray();
+//	var for5=$("#form1").serializeToStream();
+//	var for6=$("#form2").serializeToStream();
+	console.log(for1);
+	console.log(for2);
+	console.log(for3);
+	console.log(for4);
+//	console.log(for5);
+//	console.log(for6);
+})
+	
+</script>
+	</body>
+</html>

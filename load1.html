@@ -1,0 +1,29 @@
+<html>
+<head>
+<title>Loading.....</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script language="JavaScript">
+
+var url = 'http://www.XXXX.com';
+
+</script>
+</head>
+<body scroll="no" bgcolor="#FFFFFF" onLoad="location.href = url">
+<div align="center">
+<br><br><br><br><br><br><br>
+<p><font face="Verdana, Arial, Helvetica, sans-serif" size="2" color="#FF6600">正在载入XXXX....</font>
+</p>
+<p>
+<script>
+
+if (document.layers)
+     document.write('<Layer src="' + url + ' " VISIBILITY="hide"> </Layer>');
+     else if (document.all || document.getElementById)
+      document.write('<iframe src="' + url + '" style="visibility: hidden;"></iframe>');
+else location.href = url;
+
+</script>
+</p>
+</div>
+</body>
+</html>
